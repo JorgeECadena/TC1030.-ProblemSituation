@@ -8,7 +8,7 @@
  * 
  * @return Episode 
  */
-Episode :: Episode() : id(0), title(""), lenght(0.0),number(0), season(0)  {
+Episode :: Episode() : id(0), title(""), length(0.0),number(0), season(0)  {
 
 }
 
@@ -23,7 +23,7 @@ Episode :: Episode() : id(0), title(""), lenght(0.0),number(0), season(0)  {
  * @return Episode 
  */
 Episode :: Episode(int id, std::string title, float length, unsigned short number, unsigned short season) :
-id (id), title(title), lenght(length),number(number), season(season)  {
+id (id), title(title), length(length),number(number), season(season)  {
 
 }
 
@@ -61,8 +61,8 @@ std::string Episode :: getTitle(void){
  * 
  * @return float 
  */
-float Episode :: getLenght(void){
-    return lenght;
+float Episode :: getLength(void){
+    return length;
 
 }
 
@@ -97,10 +97,10 @@ void Episode:: setId(int id){
 /**
  * @brief Set the length attribute
  * 
- * @param lenght 
+ * @param length 
  */
-void Episode :: setLenght(float lenght){
-    this-> lenght = lenght;
+void Episode :: setLength(float length){
+    this-> length = length;
 
 }
 
