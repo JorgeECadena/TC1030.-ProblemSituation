@@ -10,7 +10,7 @@ Movie :: Movie() : Video(), votes(NULL) {
 
 /*
 * Parameterized constructor, receives int id, string name, float length, 
-* string votes to set the class attributes
+* string genre, int votes to set the class attributes
 */
 Movie :: Movie(int id, std::string name, float length, std::string genre, int votes) :
 Video(id, name, length, genre), votes(votes) {
