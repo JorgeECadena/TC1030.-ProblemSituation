@@ -7,7 +7,7 @@
 /*
 * Default constructor, sets every attribute as a NULL value
 */
-Series :: Series() : Video(), votes(NULL), episodes(NULL) {
+Series :: Series() : Video(), votes(0), episodes({}) {
 
 }
 
@@ -54,4 +54,12 @@ void Series :: setVotes(int votes) {
 */
 void Series :: setEpisodes(std::vector<Episode> episodes) {
     this -> episodes = episodes;
+}
+
+/**
+ * @brief 
+ * Add Episode objects to the episodes vector
+ */
+void Series :: addEpisode(Episode episode) {
+    this -> episodes.push_back(episode);
 }
