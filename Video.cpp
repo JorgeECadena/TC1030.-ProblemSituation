@@ -1,95 +1,122 @@
 #include ".\Video.h"
 
-/*
-* Default constructor, sets every attribute as a NULL value
-*/
+/**
+ * @brief Default Video constructor sets every parameter as an empty value
+ * 
+ * @return Video 
+ */
 Video :: Video() : id(0), name(""), length(0.0), genre("") {
 
 }
 
-/*
-* Parameterized constructor, receives int id, string name, float length, 
-* string genre to set the class attributes
-*/
+/**
+ * @brief Parameterized constructor sets every attribute value into the given parameter
+ * 
+ * @param id 
+ * @param name 
+ * @param length 
+ * @param genre 
+ * @return Video 
+ */
 Video :: Video(int id, std::string name, float length, std::string genre) :
 id(id), name(name), length(length), genre(genre) {
 
 }
 
 /**
- * Class destructor
+ * @brief Video class destructor
+ * 
+ * @return Video 
  */
-
 Video :: ~Video() {
 
 }
 
-/*
-* Returns class int id
-*/
+/**
+ * @brief Get the id attribute
+ * 
+ * @return int 
+ */
 int Video :: getId(void) {
     return id;
 }
 
-/*
-* Returns class string name
-*/
+/**
+ * @brief Get the name attribute
+ * 
+ * @return std::string 
+ */
 std::string Video :: getName(void) {
     return name;
 }
 
-/*
-* Returns class float length
-*/
+/**
+ * @brief Get the length attribute
+ * 
+ * @return float 
+ */
 float Video :: getLength(void) {
     return length;
 }
 
-/*
-* Returns class string genre
-*/
+/**
+ * @brief Get the genre attribute
+ * 
+ * @return std::string 
+ */
 std::string Video :: getGenre(void) {
     return genre;
 }
 
-/*
-* Set the id attribute value to the given int value
-*/
+/**
+ * @brief Set the id attribute
+ * 
+ * @param id 
+ */
 void Video :: setId(int id) {
     this -> id = id;
 }
 
-/*
-* Set the name attribute value to the given string value
-*/
+/**
+ * @brief Set the name attribute
+ * 
+ * @param name 
+ */
 void Video :: setName(std::string name) {
     this -> name = name;
 }
 
-/*
-* Set the length attribute value to the given float value 
-*/
+/**
+ * @brief Set the length attribute
+ * 
+ * @param length 
+ */
 void Video :: setLength(float length) {
     this -> length = length;
 }
 
-/*
-* Set the genre attribute value to the given string value
-*/
+/**
+ * @brief Set the genre attribute
+ * 
+ * @param genre 
+ */
 void Video :: setGenre(std::string genre) {
     this -> genre = genre;
 }
 
-/*
-* Virtual method doesn't do anything on the father class
-*/
+/**
+ * @brief Doesn't do anything on the base class
+ * 
+ */
 void Video :: getRating(void) {
 
 }
 
-/*
-* Virtual method doesn't do anything on the father class
-*/
+/**
+ * @brief Doesn't do anything on the derived class
+ * 
+ * @param value 
+ */
 void Video :: addVote(unsigned short value) {
     
 }
