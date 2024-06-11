@@ -6,11 +6,11 @@
 #include <string>
 #include <vector>
 
-class Series : public Video {
+class Series : virtual public Video {
     public:
         // Constructors
         Series();    // Default constructor
-        Series(int id, std::string name, float length, std::string genre, int votes, std::vector<Episode> episodes);    // Parameterized constructor
+        Series(int id, std::string name, float length, std::string genre, std::vector<Episode> episodes);    // Parameterized constructor
 
         //Destructor
         ~Series();
@@ -33,6 +33,6 @@ class Series : public Video {
 
     private:
         // Define class attributes
-        int votes;
+        int votes = 0;  // Initialize votes as 0
         std::vector<Episode> episodes; 
 };
