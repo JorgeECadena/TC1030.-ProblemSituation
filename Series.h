@@ -23,10 +23,12 @@ class Series : public Video {
         void setVotes(int votes);
         void setEpisodes(std::vector<Episode> episodes);
 
+        // Series methods
+        void addEpisode(Episode episode);
+
         // Methods override
         void getRating(void) override;
         void addVote(unsigned short value) override;
-        void addEpisode(Episode episode);
 
 
     private:
