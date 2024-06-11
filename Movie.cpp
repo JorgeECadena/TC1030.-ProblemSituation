@@ -18,6 +18,13 @@ Video(id, name, length, genre), votes(votes) {
 }
 
 /*
+* Movie class destructor
+*/
+Movie :: ~Movie() {
+    
+}
+
+/*
 * Returns class int votes
 */
 int Movie :: getVotes(void) {
