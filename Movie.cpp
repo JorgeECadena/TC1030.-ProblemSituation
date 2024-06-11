@@ -4,7 +4,7 @@
 /*
 * Default constructor, sets every attribute as a NULL value
 */
-Movie :: Movie() : Video(), votes(NULL) {
+Movie :: Movie() : Video(), votes(0) {
 
 }
 
