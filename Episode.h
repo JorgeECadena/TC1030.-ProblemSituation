@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Video.h"
 #include <iostream>
 #include <string>
 
@@ -26,9 +25,7 @@ class Episode {
         void setLenght(float lenght);
         void setNumber(unsigned short number);
         void setSeason(unsigned short season);
-         
-
-        
+                 
     private:
         // Define class attributes
         float lenght;
