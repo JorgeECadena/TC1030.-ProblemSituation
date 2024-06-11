@@ -1,52 +1,68 @@
 #include ".\Movie.h"
 #include ".\Video.h"
 
-/*
-* Default constructor, sets every attribute as a NULL value
-*/
+/**
+ * @brief Movie default constructor
+ * 
+ * @return Movie 
+ */
 Movie :: Movie() : Video() {
 
 }
 
-/*
-* Parameterized constructor, receives int id, string name, float length, 
-* string genre, int votes to set the class attributes
-*/
+/**
+ * @brief Parameterized constructor changes attributes values into received parameters
+ * 
+ * @param id 
+ * @param name 
+ * @param length 
+ * @param genre 
+ * @return Movie 
+ */
 Movie :: Movie(int id, std::string name, float length, std::string genre) : Video(id, name, length, genre) {
 
 }
 
-/*
-* Movie class destructor
-*/
+/**
+ * @brief Movie class destructor
+ * 
+ * @return Movie 
+ */
 Movie :: ~Movie() {
     
 }
 
-/*
-* Returns class int votes
-*/
+/**
+ * @brief Get the votes attribute
+ * 
+ * @return int 
+ */
 int Movie :: getVotes(void) {
     return votes;
 }
 
-/*
-* Set the votes attribute value to the given int value
-*/
+/**
+ * @brief Set the votes attribute
+ * 
+ * @param votes 
+ */
 void Movie :: setVotes(int votes) {
     this -> votes = votes;
 }
 
-/*
-* Overrided method doesn't do anything yet on the son class
-*/
+/**
+ * @brief Print the rating of the movie
+ * 
+ */
 void Movie :: getRating(void) {
     // TODO: Set method logic
 }
 
-/*
-* Overrided method doesn't do anything yet on the son class
-*/
+/**
+ * @brief Adds the value received to the votes attribute
+ * 
+ * @param value 
+ */
 void Movie :: addVote(unsigned short value) {
     // TODO: Set method logic
 }
