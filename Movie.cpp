@@ -4,7 +4,7 @@
 /*
 * Default constructor, sets every attribute as a NULL value
 */
-Movie :: Movie() : Video(), votes(0) {
+Movie :: Movie() : Video() {
 
 }
 
@@ -12,8 +12,7 @@ Movie :: Movie() : Video(), votes(0) {
 * Parameterized constructor, receives int id, string name, float length, 
 * string genre, int votes to set the class attributes
 */
-Movie :: Movie(int id, std::string name, float length, std::string genre, int votes) :
-Video(id, name, length, genre), votes(votes) {
+Movie :: Movie(int id, std::string name, float length, std::string genre) : Video(id, name, length, genre) {
 
 }
 

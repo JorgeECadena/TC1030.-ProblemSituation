@@ -8,7 +8,7 @@ class Movie : public Video{
     public:
         // Constructors
         Movie();    // Default constructor
-        Movie(int id, std::string name, float length, std::string genre, int votes);    // Parameterized constructor
+        Movie(int id, std::string name, float length, std::string genre);    // Parameterized constructor
 
         //Destructor
         ~Movie();
@@ -24,5 +24,5 @@ class Movie : public Video{
         void addVote(unsigned short value) override;
     private:
         // Define class attributes
-        int votes;
+        int votes = 0;  // Initialize votes as 0
 };
