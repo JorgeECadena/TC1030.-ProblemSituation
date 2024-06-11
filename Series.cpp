@@ -20,7 +20,7 @@ Video(id, name, length, genre), votes(votes), episodes(episodes) {
 * Series destructor
 */
 Series :: ~Series() {
-    
+
 }
 
 /*
@@ -48,6 +48,6 @@ void Series :: setVotes(int votes) {
 /*
 * Set the name attribute value to the given string value
 */
-void Series :: setEpisodes(vector episodes) {
+void Series :: setEpisodes(std::vector<Episode> episodes) {
     this -> episodes = episodes;
 }
