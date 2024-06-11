@@ -86,3 +86,10 @@ void Video :: setGenre(std::string genre) {
 void Video :: getRating(void) {
 
 }
+
+/*
+* Virtual method doesn't do anything on the father class
+*/
+void Video :: addVote(unsigned short value) {
+    
+}
