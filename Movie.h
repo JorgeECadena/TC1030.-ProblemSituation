@@ -4,13 +4,11 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Movie : public Video{
     public:
         // Constructors
         Movie();    // Default constructor
-        Movie(int id, string name, float length, string genre, int votes);    // Parameterized constructor
+        Movie(int id, std::string name, float length, std::string genre, int votes);    // Parameterized constructor
 
         //Destructor
         ~Movie();
