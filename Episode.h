@@ -11,7 +11,7 @@ class Episode {
         Episode(int id, std::string title, float lenght, unsigned short number, unsigned short season);    // Parameterized constructor
 
         //Destructor
-         ~Episode();
+        ~Episode();
 
         // Getters
         int getId(void);
