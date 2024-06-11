@@ -6,7 +6,7 @@
 /*
 * Default constructor, sets every attribute as a NULL value
 */
-Episode :: Episode() : id(NULL), title(NULL), lenght(NULL),number(NULL), season(NULL)  {
+Episode :: Episode() : id(0), title(""), lenght(0.0),number(0), season(0)  {
 
 }
 
