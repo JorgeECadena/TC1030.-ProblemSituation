@@ -4,62 +4,98 @@
 #include <string>
 #include <vector>
 
-/*
-* Default constructor, sets every attribute as a NULL value
-*/
-Series :: Series() : Video(), votes(0), episodes({}) {
+/**
+ * @brief Default constructor sets every attribute to empty values
+ * 
+ * @return Series 
+ */
+Series :: Series() : Video() {
 
 }
 
-/*
-* Parameterized constructor, receives int id, string name, float length, 
-* string genre, int votes, vector<Episode> episodes to set the class attributes
-*/
-Series :: Series(int id, std::string name, float length, std::string genre, int votes, std::vector<Episode> episodes) :
-Video(id, name, length, genre), votes(votes), episodes(episodes) {
+/**
+ * @brief Parameterized constructor turns attributes values into the received parameters 
+ * 
+ * @param id 
+ * @param name 
+ * @param length 
+ * @param genre 
+ * @param episodes 
+ * @return Series 
+ */
+Series :: Series(int id, std::string name, float length, std::string genre, std::vector<Episode> episodes) :
+Video(id, name, length, genre), episodes(episodes) {
 
 }
 
-/*
-* Series destructor
-*/
+/**
+ * @brief Series destructor
+ * 
+ * @return Series 
+ */
 Series :: ~Series() {
 
 }
 
-/*
-* Returns class int votes
-*/
+/**
+ * @brief Get the votes attribute
+ * 
+ * @return int 
+ */
 int Series :: getVotes(void) {
     return votes;
 }
 
-/*
-* Returns class vector<Episode> episodes
-*/
+/**
+ * @brief Get the Episodes vector
+ * 
+ * @return std::vector<Episode> 
+ */
 std::vector<Episode> Series :: getEpisodes(void) {
     return episodes;
 }
 
 
-/*
-* Set the votes attribute value to the given int value
-*/
+/**
+ * @brief Set the votes attribute
+ * 
+ * @param votes 
+ */
 void Series :: setVotes(int votes) {
     this -> votes = votes;
 }
 
-/*
-* Set the episodes attribute value to the given vector<Episode> value
-*/
+/**
+ * @brief Set the Episodes vector
+ * 
+ * @param episodes 
+ */
 void Series :: setEpisodes(std::vector<Episode> episodes) {
     this -> episodes = episodes;
 }
 
 /**
- * @brief 
- * Add Episode objects to the episodes vector
+ * @brief Add episodes to the episodes vector
+ * 
+ * @param episode 
  */
 void Series :: addEpisode(Episode episode) {
     this -> episodes.push_back(episode);
+}
+
+/**
+ * @brief Overrided method doesn't do anything yet on the son class
+ * 
+ */
+void Series :: getRating(void) {
+
+}
+
+/**
+ * @brief Overrided method doesn't do anything yet on the son class
+ * 
+ * @param value 
+ */
+void Series :: addVote(unsigned short value) {
+
 }
