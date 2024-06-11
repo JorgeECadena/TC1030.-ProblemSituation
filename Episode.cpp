@@ -1,5 +1,8 @@
 #include ".\Episode.h"
 
+#include <iostream>
+#include <string>
+
 /*
 * Default constructor, sets every attribute as a NULL value
 */
@@ -13,6 +16,13 @@ Episode :: Episode() : id(NULL), title(NULL), lenght(NULL),number(NULL), season(
 */
 Episode :: Episode(int id, std::string title, float length, unsigned short number, unsigned short season) :
 id (id), title(title), lenght(length),number(number), season(season)  {
+
+}
+
+/*
+* Episode destructor
+*/
+Episode :: ~Episode() {
 
 }
 
