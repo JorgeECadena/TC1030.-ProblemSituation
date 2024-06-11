@@ -16,6 +16,14 @@ id(id), name(name), length(length), genre(genre) {
 
 }
 
+/**
+ * Class destructor
+ */
+
+Video :: ~Video() {
+
+}
+
 /*
 * Returns class int id
 */

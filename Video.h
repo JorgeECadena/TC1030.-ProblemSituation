@@ -9,6 +9,9 @@ class Video {
         Video();    // Default constructor
         Video(int id, std::string name, float length, std::string genre);    // Parameterized constructor
 
+        // Destructor
+        ~Video();
+
         // Getters
         int getId(void);
         std::string getName(void);
