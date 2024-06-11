@@ -3,7 +3,7 @@
 /*
 * Default constructor, sets every attribute as a NULL value
 */
-Video :: Video() : id(NULL), name(NULL), length(NULL), genre(NULL) {
+Video :: Video() : id(0), name(""), length(0.0), genre("") {
 
 }
 
