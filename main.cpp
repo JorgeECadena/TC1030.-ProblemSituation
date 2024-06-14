@@ -1,10 +1,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "main.h"
 #include ".\Video.h"
 #include ".\Movie.h"
 #include ".\Series.h"
 #include ".\Episode.h"
+
+float getSeriesLength(std::vector<Episode>* episodes) {
+    // Create the sum local variable
+    float sum = 0.0;
+
+    // Iterate in the vector
+    for(int i = 0; i < episodes->size(); i++) {
+        sum += (*episodes)[i].getLength();
+    }
+    return sum;
+}
 
 int main() {
     // Create three different movies
@@ -25,8 +37,8 @@ int main() {
     std::vector<Episode> secondSeriesEpisodes = {*secondSeriesEpisodeOne, *secondSeriesEpisodeTwo};
 
     // Create two different series
-    Series* firstSeries = new Series(0, "Brooklyn 99", 0.57, "Comedy", firstSeriesEpisodes);
-    Series* secondSeries = new Series(1, "Stranger Things", 0.60, "Suspense", secondSeriesEpisodes);
+    Series* firstSeries = new Series(0, "Brooklyn 99", getSeriesLength(&firstSeriesEpisodes), "Comedy", firstSeriesEpisodes);
+    Series* secondSeries = new Series(1, "Stranger Things", getSeriesLength(&secondSeriesEpisodes), "Suspense", secondSeriesEpisodes);
 
     // Free the allocated memory
     delete firstMovie;
