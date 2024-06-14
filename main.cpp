@@ -40,6 +40,9 @@ int main() {
     Series* firstSeries = new Series(0, "Brooklyn 99", getSeriesLength(&firstSeriesEpisodes), "Comedy", firstSeriesEpisodes);
     Series* secondSeries = new Series(1, "Stranger Things", getSeriesLength(&secondSeriesEpisodes), "Suspense", secondSeriesEpisodes);
 
+    // Create a video vector
+    std::vector<Video> videoVector = {*firstMovie, *secondMovie, *thirdMovie, *firstSeries, *secondSeries};
+
     // Free the allocated memory
     delete firstMovie;
     delete secondMovie;
