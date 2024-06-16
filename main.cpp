@@ -24,6 +24,7 @@ float getSeriesLength(std::vector<Episode>* episodes) {
 }
 
 int main() {
+    int voters = 0;
     std::string user;
     // Create three different movies
     Movie* firstMovie = new Movie(0, "Baby Driver", 1.92, "Action");
@@ -75,14 +76,14 @@ int main() {
     std::string userSelection = "";
     bool isUserSelectionValid;
 
-    // Get the types of the Movie and Series classes
-    // Auto is used because we don't know the exact type of typeid().name()
-    auto movieType = typeid(*firstMovie).name();
-    auto seriesType = typeid(*firstSeries).name();
+    // Selections for movies and series
+    std::vector<std::string> moviesSelections = {"1", "2", "3"}; 
+    std::vector<std::string> seriesSelections = {"1", "2"}; 
 
     // While loop condition
     bool exitCondition = true;
     unsigned short counter = 0; // Create counter
+    bool showMovies = false;
     while(exitCondition) {
         // Ask for user's selection
         do {
@@ -128,24 +129,82 @@ int main() {
             }
         } while (isUserSelectionValid == false);    // Repeat until the input is valid
 
+        showMovies = false;
         // What to do when user selects to watch a movie
         if(userSelection == "a") {
+            showMovies = true;
             // Show the available movies
             std::cout << "\n\nAvailable movies:\n" << std::endl;
             // Iterate over the movies vector to show them all
             for(int i = 0; i < videoVector[0].size(); i++) {
                 // Show and format the movies info
-                std::cout << "\t(" << (i + 1) << ") " <<videoVector[0][i].getName() << std::endl;
+                std::cout << "\t(" << (i + 1) << ") " << videoVector[0][i].getName() << std::endl;
             }
+
         } else if(userSelection == "b") {
+            // Show the available series
+            std::cout << "\n\nAvailable series:\n" << std::endl;
+            // iterate over the series vector to show them all
             for(int i = 0; i < videoVector[1].size(); i++) {
-                std::cout << videoVector[1][i].getName() << std::endl;
+                // Show and format the series info
+                std::cout << "\t(" << (i + 1) << ") " << videoVector[1][i].getName() << std::endl;
             }
         } else {
+            // Print a thanks message
             std::cout << "\n\n\t\tThank you for watching, " << user << "!"<< std::endl,
-            exitCondition = false;
+            exitCondition = false;  // Exit the loop
+            continue;   // Skip to the next iteration of the loop
         }
 
+        
+        isUserSelectionValid = false;
+        counter = 0;
+        do {
+            isUserSelectionValid = false;
+            counter++;
+            // Ask user for the movie they want to watch
+            std::cout << "\nSelect the number of the movie you want to watch: ";
+            std::cin >> userSelection;
+            // Iterate over the valid inputs to check if user entered a valid input
+            for(int i = 0; i < moviesSelections.size(); i++) {
+                // If input is valid then get out of the loop
+                if(userSelection == moviesSelections[i]) {
+                    isUserSelectionValid = true;
+                    counter = 0;
+
+                    switch (i) {
+                        case 0:
+                            userSelection = "a";
+                            break;
+                        case 1:
+                            userSelection = "b";
+                            break;
+                        case 2:
+                            userSelection = "c";
+                            break;
+                        default:
+                            std::cout << "An error has occured!" << std::endl;
+                            break;
+                    }
+                }
+            }
+            // If input is not valid keep asking for it
+            if(counter > 0) {
+                std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+            }
+        } while(isUserSelectionValid == false);
+
+        // Show every movie depending on user's selection
+        if(userSelection == "a") {
+            std::cout << "\n\n\tName: " << movieVector[0].getName() << "\n\tGenre: " << movieVector[0].getGenre() <<
+            "\n\tLength (decimals): " << movieVector[0].getLength() << std::endl;
+        } else if(userSelection == "b") {
+            std::cout << "\n\n\tName: " << movieVector[1].getName() << "\n\tGenre: " << movieVector[1].getGenre() <<
+            "\n\tLength (decimals): " << movieVector[1].getLength() << std::endl;
+        } else {
+            std::cout << "\n\n\tName: " << movieVector[2].getName() << "\n\tGenre: " << movieVector[2].getGenre() <<
+            "\n\tLength (decimals): " << movieVector[2].getLength() << std::endl;
+        }
     }
 
 
