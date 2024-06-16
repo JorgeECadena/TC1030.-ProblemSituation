@@ -73,7 +73,7 @@ int main() {
 
     // User related variables
     std::string userSelection = "";
-    bool isUserSelectionValid = false;
+    bool isUserSelectionValid;
 
     // Get the types of the Movie and Series classes
     // Auto is used because we don't know the exact type of typeid().name()
@@ -82,10 +82,11 @@ int main() {
 
     // While loop condition
     bool exitCondition = true;
+    unsigned short counter = 0; // Create counter
     while(exitCondition) {
         // Ask for user's selection
         do {
-            unsigned short counter = 0; // Create counter
+            isUserSelectionValid = false;
             counter++;  // Add 1 to counter
 
             // Print options
@@ -102,7 +103,7 @@ int main() {
                     // Check if the input is valid 
                     if(userSelection == validInputs[i][j]) {
                         isUserSelectionValid = true;
-                        counter--;
+                        counter = 0;
                         
                         // Set the input to a, b or c
                         switch(i) {
@@ -127,19 +128,27 @@ int main() {
             }
         } while (isUserSelectionValid == false);    // Repeat until the input is valid
 
+        // What to do when user selects to watch a movie
         if(userSelection == "a") {
+            // Show the available movies
+            std::cout << "\n\nAvailable movies:\n" << std::endl;
+            // Iterate over the movies vector to show them all
             for(int i = 0; i < videoVector[0].size(); i++) {
-                std::cout << videoVector[0][i].getName() << std::endl;
+                // Show and format the movies info
+                std::cout << "\t(" << (i + 1) << ") " <<videoVector[0][i].getName() << std::endl;
             }
         } else if(userSelection == "b") {
             for(int i = 0; i < videoVector[1].size(); i++) {
                 std::cout << videoVector[1][i].getName() << std::endl;
             }
         } else {
+            std::cout << "\n\n\t\tThank you for watching, " << user << "!"<< std::endl,
             exitCondition = false;
         }
 
     }
+
+
     // Free the allocated memory
     delete firstMovie;
     delete secondMovie;
