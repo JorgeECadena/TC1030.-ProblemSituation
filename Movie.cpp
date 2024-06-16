@@ -55,7 +55,10 @@ void Movie :: setVotes(int votes) {
  * 
  */
 void Movie :: getRating(void) {
-    // TODO: Set method logic
+    int actualVotes = this -> getVotes();
+    float rating = actualVotes / voters;
+
+    std::cout << "Movie\'s " << this -> getName() << " Rating is: " << rating << std::endl;
 }
 
 /**
@@ -64,5 +67,11 @@ void Movie :: getRating(void) {
  * @param value 
  */
 void Movie :: addVote(unsigned short value) {
-    // TODO: Set method logic
+    std::cout << "Previous votes: " << this -> getVotes() << std::endl;
+    int actualVotes = this -> getVotes();
+    int votesSum = actualVotes + value;
+
+    this -> setVotes(votesSum);
+
+    std::cout << "New votes: " << this -> getVotes() << std::endl;
 }

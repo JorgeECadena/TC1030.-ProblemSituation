@@ -6,6 +6,8 @@
 #include ".\Series.h"
 #include ".\Episode.h"
 
+int voters = 0;
+
 /**
  * @brief Returns the sum of the length of every episode 
  * 
@@ -24,7 +26,6 @@ float getSeriesLength(std::vector<Episode>* episodes) {
 }
 
 int main() {
-    int voters = 0;
     std::string user;
     // Create three different movies
     Movie* firstMovie = new Movie(0, "Baby Driver", 1.92, "Action");
@@ -72,6 +73,9 @@ int main() {
     // Declare a vector of vectors with the valid inputs
     std::vector<std::vector<std::string>> validInputs = {validMovieInputs, validSeriesInputs, validExitInputs};
 
+    // Vector with the valid voting values
+    std::vector<unsigned short> validVotingValues = {1, 2, 3, 4, 5};
+
     // User related variables
     std::string userSelection = "";
     bool isUserSelectionValid;
@@ -79,6 +83,9 @@ int main() {
     // Selections for movies and series
     std::vector<std::string> moviesSelections = {"1", "2", "3"}; 
     std::vector<std::string> seriesSelections = {"1", "2"}; 
+
+    // Options for voting for a movie
+    std::vector<std::string> moviesVotingOptions = {"1", "2"}; 
 
     // While loop condition
     bool exitCondition = true;
@@ -140,7 +147,143 @@ int main() {
                 // Show and format the movies info
                 std::cout << "\t(" << (i + 1) << ") " << videoVector[0][i].getName() << std::endl;
             }
+            isUserSelectionValid = false;
+            counter = 0;
+            do {
+                isUserSelectionValid = false;
+                counter++;
+                // Ask user for the movie they want to watch
+                std::cout << "\nSelect the number of the movie you want to watch: ";
+                std::cin >> userSelection;
+                // Iterate over the valid inputs to check if user entered a valid input
+                for(int i = 0; i < moviesSelections.size(); i++) {
+                    // If input is valid then get out of the loop
+                    if(userSelection == moviesSelections[i]) {
+                        isUserSelectionValid = true;
+                        counter = 0;
 
+                        switch (i) {
+                            case 0:
+                                userSelection = "a";
+                                break;
+                            case 1:
+                                userSelection = "b";
+                                break;
+                            case 2:
+                                userSelection = "c";
+                                break;
+                            default:
+                                std::cout << "An error has occured!" << std::endl;
+                                break;
+                        }
+                    }
+                }
+                // If input is not valid keep asking for it
+                if(counter > 0) {
+                    std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                }
+            } while(isUserSelectionValid == false);
+
+            // Show every movie depending on user's selection
+            if(userSelection == "a") {
+                std::cout << "\n\n\tName: " << movieVector[0].getName() << "\n\tGenre: " << movieVector[0].getGenre() <<
+                "\n\tLength (decimals): " << movieVector[0].getLength() << std::endl;
+                unsigned short movieOneVotes = 0;
+
+                // Show user the possible options
+                std::cout << "\nOptions:\n(1) Vote\n(2) Get Rating" << std::endl;
+
+                isUserSelectionValid = false;
+                counter = 0;
+
+                do {
+                    counter++;
+                    std::cout << "\nSelect the number of option you want to do: ";
+                    std::cin >> userSelection;
+
+                    for(int i = 0; i < moviesVotingOptions.size(); i++) {
+                        if(userSelection == moviesVotingOptions[i]) {
+                            isUserSelectionValid = true;
+                            counter = 0;
+
+                            switch (i) {
+                                case 0:
+                                    userSelection = "a";
+                                    break;
+                                case 1:
+                                    userSelection = "b";
+                                    break;
+                                default:
+                                    std::cout << "An error has occured!" << std::endl;
+                                    break;
+                            }
+                        }
+
+                    }
+                    if(counter > 0) {
+                        std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                    }
+                } while(isUserSelectionValid == false);
+
+
+                if(userSelection == "a") {
+                    isUserSelectionValid = false;
+                    counter = 0;
+                    do {
+                        counter++;
+                        
+                        std::cout << "\nInsert the vote you'd give to this movie: ";
+                        std::cin >> movieOneVotes;
+
+                        for(int i = 0; i < validVotingValues.size(); i++) {
+                            if(movieOneVotes == validVotingValues[i]) {
+                                isUserSelectionValid = true;
+                                counter = 0;
+
+                                switch (i) {
+                                    case 0:
+                                        movieOneVotes = 1;
+                                        break;
+                                    case 1:
+                                        movieOneVotes = 2;
+                                        break;
+                                    case 2:
+                                        movieOneVotes = 3;
+                                        break;
+                                    case 3:
+                                        movieOneVotes = 4;
+                                        break;
+                                    case 4: 
+                                        movieOneVotes = 5;
+                                        break;
+                                    default:
+                                        std::cout << "An error has occured!" << std::endl;
+                                        break;
+                                }
+                            }
+                        }
+                        if(counter > 0) {
+                            std::cout << "ERROR desde el final: Input not valid, please try again!" << std::endl;
+                        }
+                    } while(isUserSelectionValid == false);
+
+                    (*firstMovie).addVote(movieOneVotes);
+                    std::cout << voters << std::endl;
+                    voters++;
+                    std::cout << voters << std::endl;
+                } else if(userSelection == "b") {
+                    (*firstMovie).getRating();
+                }
+
+            } else if(userSelection == "b") {
+                std::cout << "\n\n\tName: " << movieVector[1].getName() << "\n\tGenre: " << movieVector[1].getGenre() <<
+                "\n\tLength (decimals): " << movieVector[1].getLength() << std::endl;
+            } else {
+                std::cout << "\n\n\tName: " << movieVector[2].getName() << "\n\tGenre: " << movieVector[2].getGenre() <<
+                "\n\tLength (decimals): " << movieVector[2].getLength() << std::endl;
+            }
+
+            
         } else if(userSelection == "b") {
             // Show the available series
             std::cout << "\n\nAvailable series:\n" << std::endl;
@@ -157,54 +300,7 @@ int main() {
         }
 
         
-        isUserSelectionValid = false;
-        counter = 0;
-        do {
-            isUserSelectionValid = false;
-            counter++;
-            // Ask user for the movie they want to watch
-            std::cout << "\nSelect the number of the movie you want to watch: ";
-            std::cin >> userSelection;
-            // Iterate over the valid inputs to check if user entered a valid input
-            for(int i = 0; i < moviesSelections.size(); i++) {
-                // If input is valid then get out of the loop
-                if(userSelection == moviesSelections[i]) {
-                    isUserSelectionValid = true;
-                    counter = 0;
-
-                    switch (i) {
-                        case 0:
-                            userSelection = "a";
-                            break;
-                        case 1:
-                            userSelection = "b";
-                            break;
-                        case 2:
-                            userSelection = "c";
-                            break;
-                        default:
-                            std::cout << "An error has occured!" << std::endl;
-                            break;
-                    }
-                }
-            }
-            // If input is not valid keep asking for it
-            if(counter > 0) {
-                std::cout << "ERROR: Input not valid, please try again!" << std::endl;
-            }
-        } while(isUserSelectionValid == false);
-
-        // Show every movie depending on user's selection
-        if(userSelection == "a") {
-            std::cout << "\n\n\tName: " << movieVector[0].getName() << "\n\tGenre: " << movieVector[0].getGenre() <<
-            "\n\tLength (decimals): " << movieVector[0].getLength() << std::endl;
-        } else if(userSelection == "b") {
-            std::cout << "\n\n\tName: " << movieVector[1].getName() << "\n\tGenre: " << movieVector[1].getGenre() <<
-            "\n\tLength (decimals): " << movieVector[1].getLength() << std::endl;
-        } else {
-            std::cout << "\n\n\tName: " << movieVector[2].getName() << "\n\tGenre: " << movieVector[2].getGenre() <<
-            "\n\tLength (decimals): " << movieVector[2].getLength() << std::endl;
-        }
+        
     }
 
 

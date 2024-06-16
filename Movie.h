@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+extern int voters;
+
 class Movie : public Video{
     public:
         // Constructors
