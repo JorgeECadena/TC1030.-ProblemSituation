@@ -10,6 +10,9 @@ bool movieOne = false;
 bool movieTwo = false;
 bool movieThree = false;
 
+bool seriesOne = false;
+bool seriesTwo = false;
+
 int movieOneVoters = 0;
 int movieTwoVoters = 0;
 int movieThreeVoters = 0;
@@ -94,7 +97,8 @@ int main() {
     std::vector<std::string> seriesSelections = {"1", "2"}; 
 
     // Options for voting for a movie
-    std::vector<std::string> moviesVotingOptions = {"1", "2"}; 
+    std::vector<std::string> moviesVotingOptions = {"1", "2"};
+    std::vector<std::string> seriesVotingOptions = {"1", "2", "3"};
 
     // While loop condition
     bool exitCondition = true;
@@ -521,6 +525,272 @@ int main() {
                 // Show and format the series info
                 std::cout << "\t(" << (i + 1) << ") " << videoVector[1][i].getName() << std::endl;
             }
+
+            isUserSelectionValid = false;
+            counter = 0;
+            do {
+                isUserSelectionValid = false;
+                counter++;
+                // Ask user for the series they want to watch
+                std::cout << "\nSelect the number of the series you want to watch: ";
+                std::cin >> userSelection;
+                // Iterate over the valid inputs to check if user entered a valid input
+                for(int i = 0; i < seriesSelections.size(); i++) {
+                    // If input is valid then get out of the loop
+                    if(userSelection == seriesSelections[i]) {
+                        isUserSelectionValid = true;
+                        counter = 0;
+
+                        switch (i) {
+                            case 0:
+                                userSelection = "a";
+                                break;
+                            case 1:
+                                userSelection = "b";
+                                break;
+                            default:
+                                std::cout << "An error has occured!" << std::endl;
+                                break;
+                        }
+                    }
+                }
+                // If input is not valid keep asking for it
+                if(counter > 0) {
+                    std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                }
+            } while(isUserSelectionValid == false);
+
+            // Show every series depending on user's selection
+            if(userSelection == "a") {
+                /** FIRST SERIES OPTIONS **/
+                // Show movie information
+                std::cout << "\n\n\tName: " << seriesVector[0].getName() << "\n\tGenre: " << seriesVector[0].getGenre() <<
+                "\n\tLength (decimals): " << seriesVector[0].getLength() << std::endl;
+                // Create the local variable movieOneVotes to count the votes this movie gets
+                unsigned short seriesOneVotes = 0;
+
+                // Show user the possible options
+                std::cout << "\nOptions:\n(1) Vote\n(2) Get Rating\n(3) Episodes" << std::endl;
+                isUserSelectionValid = false;   // Set the user selection as not valid to avoid bugs
+                counter = 0;    // Initialize counter as 0
+
+                // Do while loop to verify the given options are valid
+                do {
+                    counter++;  // Add 1 to counter value
+
+                    // Ask user for their input
+                    std::cout << "\nSelect the number of option you want to do: ";
+                    std::cin >> userSelection;
+
+                    // Iterate inside the movies voting valid options
+                    for(int i = 0; i < seriesVotingOptions.size(); i++) {
+                        // If the user's input is in the movies voting valid options then go on
+                        if(userSelection == seriesVotingOptions[i]) {
+                            isUserSelectionValid = true;    // Set the user selection as valid
+                            counter = 0;    // Reset counter to zero to avoid Error message
+
+                            // Switch case to set the user input as something easier to work with
+                            switch (i) {
+                                case 0:
+                                    userSelection = "a";
+                                    break;
+                                case 1:
+                                    userSelection = "b";
+                                    break;
+                                case 2:
+                                    userSelection = "c";
+                                    break;
+                                default:
+                                    std::cout << "An error has occured!" << std::endl;
+                                    break;
+                            }
+                        }
+
+                    }
+                    // Check if there are any errors, if not just continue
+                    if(counter > 0) {
+                        std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                    }
+                } while(isUserSelectionValid == false); // Keep on going the loop until the condition is met
+                
+                // Will be done if user wants to vote
+                if(userSelection == "a") {
+                    isUserSelectionValid = false;   // Set user's condition as not valid
+                    counter = 0;    // Set counter to zero
+                    do {
+                        counter++;  
+                        
+                        // Ask user to rate the movie
+                        std::cout << "\nInsert the vote you'd give to this series: ";
+                        std::cin >> seriesOneVotes;  // Keep the vote in the unsigned short variable done before
+
+                        // Check if user's input is a valid voting value
+                        for(int i = 0; i < validVotingValues.size(); i++) {
+                            // Check if the given vote is a valid input
+                            if(seriesOneVotes == validVotingValues[i]) {
+                                isUserSelectionValid = true; // if the given selection is valid put it in 
+                                counter = 0;
+
+                                // Switch case to check values from 1 to 5
+                                switch (i) {
+                                    case 0:
+                                        seriesOneVotes = 1;
+                                        break;
+                                    case 1:
+                                        seriesOneVotes = 2;
+                                        break;
+                                    case 2:
+                                        seriesOneVotes = 3;
+                                        break;
+                                    case 3:
+                                        seriesOneVotes = 4;
+                                        break;
+                                    case 4: 
+                                        seriesOneVotes = 5;
+                                        break;
+                                    default:
+                                        std::cout << "An error has occured!" << std::endl;
+                                        break;
+                                }
+                            }
+                        }
+                        // Check if there are any input errors, if not just continue
+                        if(counter > 0) {
+                            std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                        }
+                    } while(isUserSelectionValid == false); // Keep on going the loop until the condition is met
+                    
+                    // Use this variables to know which amount of voters to use as a denominator
+                    seriesOne = true;
+                    seriesTwo = false;
+                    // Add the vote given to the vote attribute
+                    (*firstSeries).addVote(seriesOneVotes);
+                    seriesOneVoters++;   // Sum one to voters for the first movie
+                } else if(userSelection == "b") {
+                    (*firstSeries).getRating();  // In case user selects to do the getRating method it calls the pointer to the heap variable
+                } else if(userSelection == "c") {
+                    // Display series episodes
+                    for(int i = 0; i < (*firstSeries).getEpisodes().size(); i++) {
+                        std::cout << "\n\nTitle: " << (*firstSeries).getEpisodes()[i].getTitle() <<
+                        "\nSeason: " << (*firstSeries).getEpisodes()[i].getSeason() << std::endl;
+                    }
+                }
+            } else if(userSelection == "b") {
+                /** SECOND SERIES OPTIONS **/
+                // Show movie information
+                std::cout << "\n\n\tName: " << seriesVector[1].getName() << "\n\tGenre: " << seriesVector[1].getGenre() <<
+                "\n\tLength (decimals): " << seriesVector[1].getLength() << std::endl;
+                // Create the local variable movieOneVotes to count the votes this movie gets
+                unsigned short seriesTwoVotes = 0;
+
+                // Show user the possible options
+                std::cout << "\nOptions:\n(1) Vote\n(2) Get Rating\n(3) Episodes" << std::endl;
+                isUserSelectionValid = false;   // Set the user selection as not valid to avoid bugs
+                counter = 0;    // Initialize counter as 0
+
+                // Do while loop to verify the given options are valid
+                do {
+                    counter++;  // Add 1 to counter value
+
+                    // Ask user for their input
+                    std::cout << "\nSelect the number of option you want to do: ";
+                    std::cin >> userSelection;
+
+                    // Iterate inside the movies voting valid options
+                    for(int i = 0; i < seriesVotingOptions.size(); i++) {
+                        // If the user's input is in the movies voting valid options then go on
+                        if(userSelection == seriesVotingOptions[i]) {
+                            isUserSelectionValid = true;    // Set the user selection as valid
+                            counter = 0;    // Reset counter to zero to avoid Error message
+
+                            // Switch case to set the user input as something easier to work with
+                            switch (i) {
+                                case 0:
+                                    userSelection = "a";
+                                    break;
+                                case 1:
+                                    userSelection = "b";
+                                    break;
+                                case 2:
+                                    userSelection = "c";
+                                    break;
+                                default:
+                                    std::cout << "An error has occured!" << std::endl;
+                                    break;
+                            }
+                        }
+
+                    }
+                    // Check if there are any errors, if not just continue
+                    if(counter > 0) {
+                        std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                    }
+                } while(isUserSelectionValid == false); // Keep on going the loop until the condition is met
+                
+                // Will be done if user wants to vote
+                if(userSelection == "a") {
+                    isUserSelectionValid = false;   // Set user's condition as not valid
+                    counter = 0;    // Set counter to zero
+                    do {
+                        counter++;  
+                        
+                        // Ask user to rate the movie
+                        std::cout << "\nInsert the vote you'd give to this series: ";
+                        std::cin >> seriesTwoVotes;  // Keep the vote in the unsigned short variable done before
+
+                        // Check if user's input is a valid voting value
+                        for(int i = 0; i < validVotingValues.size(); i++) {
+                            // Check if the given vote is a valid input
+                            if(seriesTwoVotes == validVotingValues[i]) {
+                                isUserSelectionValid = true; // if the given selection is valid put it in 
+                                counter = 0;
+
+                                // Switch case to check values from 1 to 5
+                                switch (i) {
+                                    case 0:
+                                        seriesTwoVotes = 1;
+                                        break;
+                                    case 1:
+                                        seriesTwoVotes = 2;
+                                        break;
+                                    case 2:
+                                        seriesTwoVotes = 3;
+                                        break;
+                                    case 3:
+                                        seriesTwoVotes = 4;
+                                        break;
+                                    case 4: 
+                                        seriesTwoVotes = 5;
+                                        break;
+                                    default:
+                                        std::cout << "An error has occured!" << std::endl;
+                                        break;
+                                }
+                            }
+                        }
+                        // Check if there are any input errors, if not just continue
+                        if(counter > 0) {
+                            std::cout << "ERROR: Input not valid, please try again!" << std::endl;
+                        }
+                    } while(isUserSelectionValid == false); // Keep on going the loop until the condition is met
+                    
+                    // Use this variables to know which amount of voters to use as a denominator
+                    seriesOne = false;
+                    seriesTwo = true;
+                    // Add the vote given to the vote attribute
+                    (*secondSeries).addVote(seriesTwoVotes);
+                    seriesTwoVoters++;   // Sum one to voters for the first movie
+                } else if(userSelection == "b") {
+                    (*secondSeries).getRating();  // In case user selects to do the getRating method it calls the pointer to the heap variable
+                } else if(userSelection == "c") {
+                    // Display series episodes
+                    for(int i = 0; i < (*secondSeries).getEpisodes().size(); i++) {
+                        std::cout << "\n\nTitle: " << (*secondSeries).getEpisodes()[i].getTitle() <<
+                        "\nSeason: " << (*secondSeries).getEpisodes()[i].getSeason() << std::endl;
+                    }
+                }
+            }
+
         } else {
             // Print a thanks message
             std::cout << "\n\n\t\tThank you for watching, " << user << "!"<< std::endl;
