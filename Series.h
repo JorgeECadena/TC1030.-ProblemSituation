@@ -6,6 +6,12 @@
 #include <string>
 #include <vector>
 
+extern bool seriesOne;
+extern bool seriesTwo;
+
+extern int seriesOneVoters;
+extern int seriesTwoVoters;
+
 class Series : virtual public Video {
     public:
         // Constructors

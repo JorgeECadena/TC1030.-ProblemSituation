@@ -88,7 +88,15 @@ void Series :: addEpisode(Episode episode) {
  * 
  */
 void Series :: getRating(void) {
+    int actualVotes = this -> getVotes();
+    float rating;
+    if(seriesOne == true) {
+        rating = actualVotes / seriesOneVoters;
+    } else if(seriesTwo == true) {
+        rating = actualVotes / seriesTwoVoters;
+    }
 
+    std::cout << "Series " << this -> getName() << " Rating is: " << rating << std::endl;
 }
 
 /**
@@ -97,5 +105,8 @@ void Series :: getRating(void) {
  * @param value 
  */
 void Series :: addVote(unsigned short value) {
+    int actualVotes = this -> getVotes();
+    int votesSum = actualVotes + value;
 
+    this -> setVotes(votesSum);
 }
