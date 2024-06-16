@@ -523,7 +523,7 @@ int main() {
             }
         } else {
             // Print a thanks message
-            std::cout << "\n\n\t\tThank you for watching, " << user << "!"<< std::endl,
+            std::cout << "\n\n\t\tThank you for watching, " << user << "!"<< std::endl;
             exitCondition = false;  // Exit the loop
             continue;   // Skip to the next iteration of the loop
         }        
