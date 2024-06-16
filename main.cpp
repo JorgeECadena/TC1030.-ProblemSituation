@@ -90,7 +90,6 @@ int main() {
     // While loop condition
     bool exitCondition = true;
     unsigned short counter = 0; // Create counter
-    bool showMovies = false;
     while(exitCondition) {
         // Ask for user's selection
         do {
@@ -136,10 +135,8 @@ int main() {
             }
         } while (isUserSelectionValid == false);    // Repeat until the input is valid
 
-        showMovies = false;
         // What to do when user selects to watch a movie
         if(userSelection == "a") {
-            showMovies = true;
             // Show the available movies
             std::cout << "\n\nAvailable movies:\n" << std::endl;
             // Iterate over the movies vector to show them all
@@ -263,7 +260,7 @@ int main() {
                             }
                         }
                         if(counter > 0) {
-                            std::cout << "ERROR desde el final: Input not valid, please try again!" << std::endl;
+                            std::cout << "ERROR: Input not valid, please try again!" << std::endl;
                         }
                     } while(isUserSelectionValid == false);
 
@@ -278,6 +275,9 @@ int main() {
             } else if(userSelection == "b") {
                 std::cout << "\n\n\tName: " << movieVector[1].getName() << "\n\tGenre: " << movieVector[1].getGenre() <<
                 "\n\tLength (decimals): " << movieVector[1].getLength() << std::endl;
+                unsigned short movieTwoVotes = 0;
+
+
             } else {
                 std::cout << "\n\n\tName: " << movieVector[2].getName() << "\n\tGenre: " << movieVector[2].getGenre() <<
                 "\n\tLength (decimals): " << movieVector[2].getLength() << std::endl;
