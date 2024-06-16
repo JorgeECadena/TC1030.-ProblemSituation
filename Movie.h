@@ -4,7 +4,13 @@
 #include <iostream>
 #include <string>
 
+extern bool movieOne;
+extern bool movieTwo;
+extern bool movieThree;
+
 extern int movieOneVoters;
+extern int movieTwoVoters;
+extern int movieThreeVoters;
 
 class Movie : public Video{
     public:
