@@ -51,7 +51,7 @@ void Movie :: setVotes(int votes) {
 }
 
 /**
- * @brief Print the rating of the movie
+ * @brief Print the movie's rating
  * 
  */
 void Movie :: getRating(void) {

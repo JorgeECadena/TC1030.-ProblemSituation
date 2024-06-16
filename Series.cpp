@@ -84,7 +84,7 @@ void Series :: addEpisode(Episode episode) {
 }
 
 /**
- * @brief Overrided method doesn't do anything yet on the son class
+ * @brief Prints the series rating 
  * 
  */
 void Series :: getRating(void) {
@@ -100,7 +100,7 @@ void Series :: getRating(void) {
 }
 
 /**
- * @brief Overrided method doesn't do anything yet on the son class
+ * @brief Add votes to the class attribute votes
  * 
  * @param value 
  */
