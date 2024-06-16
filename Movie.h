@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-extern int voters;
+extern int movieOneVoters;
 
 class Movie : public Video{
     public:

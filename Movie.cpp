@@ -56,7 +56,7 @@ void Movie :: setVotes(int votes) {
  */
 void Movie :: getRating(void) {
     int actualVotes = this -> getVotes();
-    float rating = actualVotes / voters;
+    float rating = actualVotes / movieOneVoters;
 
     std::cout << "Movie\'s " << this -> getName() << " Rating is: " << rating << std::endl;
 }
